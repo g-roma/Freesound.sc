@@ -29,7 +29,7 @@ Freesound.token="<your_api_key>";
 // Oauth2 Authentication
 // https://www.freesound.org/docs/api/authentication.html#oauth2-authentication
 // Slightly more involved, here's the recommended procedure:
-// 1. Obtain the API key
+// 1. Obtain the API key (note that old APIv1 keys will not work)
 // 2. Get the authorization URL:
 
 Freesound.clientId="<your_client_id>";

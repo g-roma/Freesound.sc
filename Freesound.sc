@@ -70,7 +70,7 @@ Freesound{
 		"Open this url in your browser:".postln;
 		"-------------------------------".postln;
 		(Freesound.uri(\AUTHORIZE) ++ "?" ++ "client_id=" ++
-		Freesound.clientId ++ "&response_type = code").postln;
+		Freesound.clientId ++ "&response_type=code").postln;
 		"-------------------------------".postln;
 	}
 

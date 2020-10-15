@@ -127,7 +127,7 @@ FSReq{
 		paramsString = params.keys(Array).collect({|k|
 			k.asString ++ "=" ++ params[k].asString.urlEncode}).join("&");
 		if (url.contains(separator)){separator = "&"};
-		cmd = "curl -H '%' '%'>% ".format(
+		cmd = "curl -H '%' '%'>'%' ".format(
 			FSReq.getHeader, this.url ++ separator ++ paramsString, filePath
 		);
 		cmd.postln;
@@ -188,7 +188,7 @@ FSPager : FSObj {
 	}
 
 	do{|f|
-		this.results.do({|snd,i| f.value( FSSound.new(snd))});
+		this.results.do({|snd,i| f.value( FSSound.new(snd), i)});
 	}
 
 }

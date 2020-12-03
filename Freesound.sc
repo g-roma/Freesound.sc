@@ -81,7 +81,7 @@ Freesound{
 
 	*getToken{|code, refresh = false|
 		var tmpFile = PathName.tmp ++ "fs_" ++ UniqueID.next ++ ".txt";
-		var cmd =  "curl -X POST -d 'client_id=%&client_secret=%";
+		var cmd =  "curl -X POST -d \"client_id=%&client_secret=%";
 		cmd = format(cmd, Freesound.clientId, Freesound.clientSecret);
 		if(refresh){
 			cmd = cmd ++ "&grant_type=refresh_token&refresh_token=%"
@@ -89,7 +89,7 @@ Freesound{
 			cmd = cmd ++ "&grant_type=authorization_code&code=%"
 		};
 		cmd = format(cmd, code);
-		cmd = cmd ++ "' https://www.freesound.org/apiv2/oauth2/access_token/ >'%'";
+		cmd = cmd ++ "\" https://www.freesound.org/apiv2/oauth2/access_token/ >\"%\"";
 		cmd = format(cmd, tmpFile);
 		cmd.unixCmd({|res, pid|
 			var tokenObj = parseFunc.value(File(tmpFile,"r").readAllString);
@@ -127,7 +127,7 @@ FSReq{
 		paramsString = params.keys(Array).collect({|k|
 			k.asString ++ "=" ++ params[k].asString.urlEncode}).join("&");
 		if (url.contains(separator)){separator = "&"};
-		cmd = "curl -H '%' '%'>'%' ".format(
+		cmd = "curl -H \"%\" \"%\">\"%\" ".format(
 			FSReq.getHeader, this.url ++ separator ++ paramsString, filePath
 		);
 		cmd.postln;
@@ -147,7 +147,7 @@ FSReq{
 
 	*retrieve{|uri,path,action|
 		var cmd;
-		cmd = "curl -H '%' '%'>'%'".format(FSReq.getHeader, uri, path);
+		cmd = "curl -H \"%\" \"%\">\"%\"".format(FSReq.getHeader, uri, path);
 		cmd.postln;
 		cmd.unixCmd(action);
 	}

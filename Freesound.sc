@@ -134,14 +134,13 @@ FSReq{
 	}
 
 	get{|action, objClass|
-		cmd.unixCmd({|res,pid|
-			var result = objClass.new(
-				File(filePath,"r").readAllString.postln;
-				Freesound.parseFunc.value(
-					File(filePath,"r").readAllString
-				)
-			);
-			action.value(result);
+		cmd.unixCmd({|res, pid|
+			var obj = nil;
+			var str = File(filePath,"r").readAllString;
+			if(str.size > 0){
+				obj = objClass.new(Freesound.parseFunc.value(str));
+			}{"ERROR: received empty response from Freesound".postln};
+			action.value(obj);
 		});
 	}
 

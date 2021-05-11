@@ -25,7 +25,7 @@ Freesound{
 
 	*initClass{
 		uris = (
-		\BASE :  "https://www.freesound.org/apiv2",
+		\BASE :  "https://freesound.org/apiv2",
 		\TEXT_SEARCH : "/search/text/",
 		\CONTENT_SEARCH : "/search/content/",
 		\COMBINED_SEARCH : "/search/combined/",
